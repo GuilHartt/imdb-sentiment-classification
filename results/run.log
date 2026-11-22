@@ -1,0 +1,115 @@
+01:02:52 | INFO    | Corpus: 50000 documents | 231.2 raw words/review | 108.1 tokens after cleaning
+01:02:52 | INFO    | Vocabulary (whole corpus, after preprocessing): 83276 types
+01:02:52 | INFO    | Running models: nb, svm, logreg, mlp
+01:06:11 | INFO    | Loading cached preprocessed corpus: C:\Users\guilh\Downloads\Metodologia\sentiment-analysis-imdb\data\cache\imdb_preprocessed_v1.pkl
+01:06:13 | INFO    | Corpus: 50000 documents | 231.2 raw words/review | 108.1 tokens after cleaning
+01:06:13 | INFO    | Split: 40000 train (50.0% positive) / 10000 test (50.0% positive)
+01:06:13 | INFO    | Vocabulary (whole corpus, after preprocessing): 83276 types
+01:06:13 | INFO    | Running models: nb, svm, logreg, mlp
+01:06:13 | INFO    | ======================================================================
+01:06:13 | INFO    | Model: nb (Naive Bayes Multinomial)
+01:06:13 | INFO    | ======================================================================
+01:07:14 | INFO    | Grid search: 61.0 s | best F1 (CV) = 0.8791 | {'clf__alpha': 0.5}
+01:07:14 | INFO    |   fold 1: F1=0.8868 acc=0.8858 recall=0.8948
+01:07:14 | INFO    |   fold 2: F1=0.8807 acc=0.8804 recall=0.8835
+01:07:14 | INFO    |   fold 3: F1=0.8755 acc=0.8741 recall=0.8852
+01:07:14 | INFO    |   fold 4: F1=0.8772 acc=0.8761 recall=0.8848
+01:07:14 | INFO    |   fold 5: F1=0.8753 acc=0.8749 recall=0.8780
+01:07:32 | INFO    | Test: F1=0.8840 acc=0.8832 AUC=0.9522 (IC 95% F1: 0.8775-0.8904)
+01:07:32 | INFO    | Cost: vectorisation 14.1 s + classifier 0.0 s | 3.211 MB | 0 params
+01:07:32 | INFO    | ======================================================================
+01:07:32 | INFO    | Model: svm (SVM Linear)
+01:07:32 | INFO    | ======================================================================
+01:08:37 | INFO    | Grid search: 64.7 s | best F1 (CV) = 0.9032 | {'clf__C': 0.1}
+01:08:37 | INFO    |   fold 1: F1=0.9055 acc=0.9039 recall=0.9210
+01:08:37 | INFO    |   fold 2: F1=0.9014 acc=0.9008 recall=0.9075
+01:08:37 | INFO    |   fold 3: F1=0.9021 acc=0.9000 recall=0.9217
+01:08:37 | INFO    |   fold 4: F1=0.9049 acc=0.9035 recall=0.9187
+01:08:37 | INFO    |   fold 5: F1=0.9018 acc=0.9009 recall=0.9105
+01:08:55 | INFO    | Test: F1=0.9040 acc=0.9033 AUC=0.9660 (IC 95% F1: 0.8976-0.9101)
+01:08:55 | INFO    | Cost: vectorisation 13.8 s + classifier 0.7 s | 2.067 MB | 50001 params
+01:08:55 | INFO    | ======================================================================
+01:08:55 | INFO    | Model: logreg (Regressão Logística)
+01:08:55 | INFO    | ======================================================================
+01:10:03 | INFO    | Grid search: 68.0 s | best F1 (CV) = 0.9033 | {'clf__C': 10.0}
+01:10:03 | INFO    |   fold 1: F1=0.9075 acc=0.9064 recall=0.9183
+01:10:03 | INFO    |   fold 2: F1=0.9008 acc=0.9006 recall=0.9022
+01:10:03 | INFO    |   fold 3: F1=0.9017 acc=0.9001 recall=0.9160
+01:10:03 | INFO    |   fold 4: F1=0.9053 acc=0.9046 recall=0.9123
+01:10:03 | INFO    |   fold 5: F1=0.9012 acc=0.9009 recall=0.9042
+01:10:22 | INFO    | Test: F1=0.9068 acc=0.9059 AUC=0.9668 (IC 95% F1: 0.9007-0.9126)
+01:10:23 | INFO    | Cost: vectorisation 14.7 s + classifier 0.8 s | 2.067 MB | 50001 params
+01:10:23 | INFO    | ======================================================================
+01:10:23 | INFO    | Model: mlp (MLP)
+01:10:23 | INFO    | ======================================================================
+01:13:38 | INFO    | Grid search: 195.5 s | best F1 (CV) = 0.8827 | {'clf__alpha': 0.01, 'clf__hidden_layer_sizes': (300,)}
+01:13:38 | INFO    |   fold 1: F1=0.8809 acc=0.8810 recall=0.8800
+01:13:38 | INFO    |   fold 2: F1=0.8853 acc=0.8851 recall=0.8862
+01:13:38 | INFO    |   fold 3: F1=0.8808 acc=0.8791 recall=0.8930
+01:13:38 | INFO    |   fold 4: F1=0.8786 acc=0.8775 recall=0.8865
+01:13:38 | INFO    |   fold 5: F1=0.8881 acc=0.8881 recall=0.8878
+01:14:11 | INFO    | Test: F1=0.8826 acc=0.8819 AUC=0.9526 (IC 95% F1: 0.8762-0.8895)
+01:14:11 | INFO    | Cost: vectorisation 27.6 s + classifier 1.4 s | 59.269 MB | 30201 params
+01:14:11 | INFO    | Results written to C:\Users\guilh\Downloads\Metodologia\sentiment-analysis-imdb\results
+01:14:11 | INFO    | Test-set results:
+ model  accuracy  precision  recall     f1  roc_auc
+    nb    0.8832     0.8778  0.8904 0.8840   0.9522
+   svm    0.9033     0.8978  0.9102 0.9040   0.9660
+logreg    0.9059     0.8982  0.9156 0.9068   0.9668
+   mlp    0.8819     0.8771  0.8882 0.8826   0.9526
+01:15:00 | INFO    | Loading cached preprocessed corpus: C:\Users\guilh\Downloads\Metodologia\sentiment-analysis-imdb\data\cache\imdb_preprocessed_v1.pkl
+01:15:02 | INFO    | Corpus: 50000 documents | 231.2 raw words/review | 108.1 tokens after cleaning
+01:15:02 | INFO    | Split: 40000 train (50.0% positive) / 10000 test (50.0% positive)
+01:15:02 | INFO    | Vocabulary (whole corpus, after preprocessing): 83276 types
+01:15:03 | INFO    | Running models: nb, svm, logreg, mlp
+01:15:03 | INFO    | ======================================================================
+01:15:03 | INFO    | Model: nb (Naive Bayes Multinomial)
+01:15:03 | INFO    | ======================================================================
+01:15:58 | INFO    | Grid search: 55.1 s | best F1 (CV) = 0.8791 | {'clf__alpha': 0.5}
+01:15:58 | INFO    |   fold 1: F1=0.8868 acc=0.8858 recall=0.8948
+01:15:58 | INFO    |   fold 2: F1=0.8807 acc=0.8804 recall=0.8835
+01:15:58 | INFO    |   fold 3: F1=0.8755 acc=0.8741 recall=0.8852
+01:15:58 | INFO    |   fold 4: F1=0.8772 acc=0.8761 recall=0.8848
+01:15:58 | INFO    |   fold 5: F1=0.8753 acc=0.8749 recall=0.8780
+01:16:14 | INFO    | Test: F1=0.8840 acc=0.8832 AUC=0.9522 (IC 95% F1: 0.8775-0.8904)
+01:16:14 | INFO    | Cost: vectorisation 12.7 s + classifier 0.0 s | 3.211 MB | 100000 params
+01:16:14 | INFO    | ======================================================================
+01:16:14 | INFO    | Model: svm (SVM Linear)
+01:16:14 | INFO    | ======================================================================
+01:17:11 | INFO    | Grid search: 57.0 s | best F1 (CV) = 0.9032 | {'clf__C': 0.1}
+01:17:11 | INFO    |   fold 1: F1=0.9055 acc=0.9039 recall=0.9210
+01:17:11 | INFO    |   fold 2: F1=0.9014 acc=0.9008 recall=0.9075
+01:17:11 | INFO    |   fold 3: F1=0.9021 acc=0.9000 recall=0.9217
+01:17:11 | INFO    |   fold 4: F1=0.9049 acc=0.9035 recall=0.9187
+01:17:11 | INFO    |   fold 5: F1=0.9018 acc=0.9009 recall=0.9105
+01:17:27 | INFO    | Test: F1=0.9040 acc=0.9033 AUC=0.9660 (IC 95% F1: 0.8976-0.9101)
+01:17:27 | INFO    | Cost: vectorisation 12.7 s + classifier 0.6 s | 2.067 MB | 50001 params
+01:17:27 | INFO    | ======================================================================
+01:17:27 | INFO    | Model: logreg (Regressão Logística)
+01:17:27 | INFO    | ======================================================================
+01:18:30 | INFO    | Grid search: 62.4 s | best F1 (CV) = 0.9033 | {'clf__C': 10.0}
+01:18:30 | INFO    |   fold 1: F1=0.9075 acc=0.9064 recall=0.9183
+01:18:30 | INFO    |   fold 2: F1=0.9008 acc=0.9006 recall=0.9022
+01:18:30 | INFO    |   fold 3: F1=0.9017 acc=0.9001 recall=0.9160
+01:18:30 | INFO    |   fold 4: F1=0.9053 acc=0.9046 recall=0.9123
+01:18:30 | INFO    |   fold 5: F1=0.9012 acc=0.9009 recall=0.9042
+01:18:47 | INFO    | Test: F1=0.9068 acc=0.9059 AUC=0.9668 (IC 95% F1: 0.9007-0.9126)
+01:18:47 | INFO    | Cost: vectorisation 13.3 s + classifier 0.8 s | 2.067 MB | 50001 params
+01:18:47 | INFO    | ======================================================================
+01:18:47 | INFO    | Model: mlp (MLP)
+01:18:47 | INFO    | ======================================================================
+01:20:26 | INFO    | Grid search: 98.8 s | best F1 (CV) = 0.8827 | {'clf__alpha': 0.01, 'clf__hidden_layer_sizes': (300,)}
+01:20:26 | INFO    |   fold 1: F1=0.8809 acc=0.8810 recall=0.8800
+01:20:26 | INFO    |   fold 2: F1=0.8853 acc=0.8851 recall=0.8862
+01:20:26 | INFO    |   fold 3: F1=0.8808 acc=0.8791 recall=0.8930
+01:20:26 | INFO    |   fold 4: F1=0.8786 acc=0.8775 recall=0.8865
+01:20:26 | INFO    |   fold 5: F1=0.8881 acc=0.8881 recall=0.8878
+01:20:59 | INFO    | Test: F1=0.8826 acc=0.8819 AUC=0.9526 (IC 95% F1: 0.8762-0.8895)
+01:20:59 | INFO    | Cost: vectorisation 27.9 s + classifier 1.5 s | 59.269 MB | 30201 params
+01:20:59 | INFO    | Results written to C:\Users\guilh\Downloads\Metodologia\sentiment-analysis-imdb\results
+01:20:59 | INFO    | Test-set results:
+ model  accuracy  precision  recall     f1  roc_auc
+    nb    0.8832     0.8778  0.8904 0.8840   0.9522
+   svm    0.9033     0.8978  0.9102 0.9040   0.9660
+logreg    0.9059     0.8982  0.9156 0.9068   0.9668
+   mlp    0.8819     0.8771  0.8882 0.8826   0.9526

@@ -1,0 +1,19 @@
+{
+  "n_features": 50000,
+  "n_negated_features": 3260,
+  "share_of_absolute_weight": 0.06564337787411256,
+  "most_positive": {
+    "not_disappoint": 0.8649906482636346,
+    "not_like": 0.78789077258951,
+    "not_perfect": 0.746029150349294,
+    "not_forget": 0.6586899273471161,
+    "not_miss": 0.6079520250652546
+  },
+  "most_negative": {
+    "not_worth": -1.1131070866743231,
+    "not_funni": -1.1012404502158946,
+    "not_recommend": -1.0765481702887203,
+    "not_wast": -0.9541066845804327,
+    "not_save": -0.9175049257695275
+  }
+}

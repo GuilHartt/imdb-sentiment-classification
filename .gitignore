@@ -1,0 +1,18 @@
+# Data and derived artefacts (the corpus is downloaded by the scripts)
+data/
+results/smoke/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# OS / editors
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

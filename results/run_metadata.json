@@ -1,0 +1,92 @@
+{
+  "environment": {
+    "timestamp": "2026-11-22T01:20:59",
+    "python": "3.14.5",
+    "scikit-learn": "1.9.1",
+    "numpy": "2.5.5",
+    "pandas": "3.1.1",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "processor": "AMD64 Family 25 Model 80 Stepping 0, AuthenticAMD",
+    "cpu_count": 12,
+    "seed": 42,
+    "n_splits": 5,
+    "scoring": {
+      "accuracy": "accuracy",
+      "precision": "precision",
+      "recall": "recall",
+      "f1": "f1",
+      "roc_auc": "roc_auc"
+    }
+  },
+  "models": [
+    "nb",
+    "svm",
+    "logreg",
+    "mlp"
+  ],
+  "best_params": {
+    "nb": {
+      "clf__alpha": 0.5
+    },
+    "svm": {
+      "clf__C": 0.1
+    },
+    "logreg": {
+      "clf__C": 10.0
+    },
+    "mlp": {
+      "clf__alpha": 0.01,
+      "clf__hidden_layer_sizes": [
+        300
+      ]
+    }
+  },
+  "timing": {
+    "nb": {
+      "grid_search_s": 55.15,
+      "preprocessing_s": 12.651,
+      "classifier_fit_s": 0.022,
+      "final_fit_s": 12.673,
+      "predict_transform_s": 1.165,
+      "predict_s": 0.007,
+      "predict_total_ms": 1172.2,
+      "predict_per_doc_us": 117.22
+    },
+    "svm": {
+      "grid_search_s": 56.99,
+      "preprocessing_s": 12.701,
+      "classifier_fit_s": 0.634,
+      "final_fit_s": 13.335,
+      "predict_transform_s": 1.188,
+      "predict_s": 0.003,
+      "predict_total_ms": 1191.2,
+      "predict_per_doc_us": 119.12
+    },
+    "logreg": {
+      "grid_search_s": 62.35,
+      "preprocessing_s": 13.321,
+      "classifier_fit_s": 0.772,
+      "final_fit_s": 14.093,
+      "predict_transform_s": 1.184,
+      "predict_s": 0.004,
+      "predict_total_ms": 1187.8,
+      "predict_per_doc_us": 118.78
+    },
+    "mlp": {
+      "grid_search_s": 98.84,
+      "preprocessing_s": 27.908,
+      "classifier_fit_s": 1.53,
+      "final_fit_s": 29.437,
+      "predict_transform_s": 1.402,
+      "predict_s": 0.005,
+      "predict_total_ms": 1407.0,
+      "predict_per_doc_us": 140.7
+    }
+  },
+  "vocabulary_size": {
+    "nb": 50000,
+    "svm": 50000,
+    "logreg": 50000,
+    "mlp": 50000
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "n_documents": 50000,
+  "n_positive": 25000,
+  "n_negative": 25000,
+  "raw_words_mean": 231.15694,
+  "raw_words_median": 173.0,
+  "raw_words_std": 171.34399728366475,
+  "raw_words_max": 2470,
+  "tokens_mean": 108.07,
+  "tokens_median": 80.0,
+  "tokens_std": 82.06972309438467,
+  "tokens_max": 1294,
+  "vocabulary_size": 83276
+}
