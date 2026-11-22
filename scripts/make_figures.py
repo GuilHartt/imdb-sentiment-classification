@@ -166,21 +166,27 @@ def figure_cost(table: pd.DataFrame, path: Path) -> None:
     palette = _palette(models)
     data = table.set_index("model").loc[models]
 
-    fig, ax = plt.subplots(figsize=(3.4, 2.45))
+    fig, ax = plt.subplots(figsize=(3.5, 2.45))
+    offsets = {"nb": (7, -3), "svm": (-6, 9), "logreg": (7, 4), "mlp": (-6, 10)}
     for index, model in enumerate(models):
         row = data.loc[model]
-        ax.scatter(row["final_fit_s"], 100 * row["f1"],
+        ax.scatter(row["classifier_fit_s"], 100 * row["f1"],
                    s=34, color=palette[model][0], edgecolor="black",
-                   linewidth=0.5, zorder=3, marker=MARKERS[index % len(MARKERS)],
-                   label=MODEL_LABELS[model])
+                   linewidth=0.5, zorder=3, marker=MARKERS[index % len(MARKERS)])
+        ax.annotate(SHORT_LABELS.get(model, model),
+                    (row["classifier_fit_s"], 100 * row["f1"]),
+                    textcoords="offset points", xytext=offsets.get(model, (6, 4)),
+                    fontsize=6.5, color="#1a1a1a")
     ax.set_xscale("log")
-    ax.xaxis.set_major_formatter(mticker.ScalarFormatter())
-    ax.xaxis.set_minor_formatter(mticker.NullFormatter())
-    ax.set_xlabel("Tempo de treinamento (s, escala log)", fontsize=8)
+    ticks = [0.02, 0.05, 0.1, 0.5, 1, 2]
+    ax.set_xticks(ticks)
+    ax.set_xticklabels(["0,02", "0,05", "0,1", "0,5", "1", "2"])
+    ax.xaxis.set_minor_locator(mticker.NullLocator())
+    ax.set_xlim(0.015, 2.6)
+    ax.set_xlabel("Tempo de treino do classificador (s, escala log)", fontsize=8)
     ax.set_ylabel("F1-score no teste (%)", fontsize=8)
     ax.grid(linestyle=":", linewidth=0.4, alpha=0.6)
-    ax.legend(frameon=False, loc="best", fontsize=6.5, handletextpad=0.4,
-              borderpad=0.2, labelspacing=0.3)
+    ax.set_ylim(87.6, 91.4)
     fig.savefig(path)
     plt.close(fig)
 
