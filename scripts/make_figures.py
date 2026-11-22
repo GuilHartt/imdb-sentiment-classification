@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env python
+#!/usr/bin/env python
 """Build every figure of the paper from the result tables in ``results/``.
 
 Usage::
@@ -61,38 +61,60 @@ def _palette(models: list[str]) -> dict[str, tuple[str, str]]:
 # Figure 1 -- methodological flow chart
 # --------------------------------------------------------------------------- #
 def figure_pipeline(path: Path) -> None:
+    """Two-row flow chart: legible at 15 cm and only ~5.5 cm tall."""
     steps = [
-        ("Corpus IMDb\n50.000 críticas rotuladas", "#e8e8e8"),
-        ("Divisão estratificada\n80 % treino / 20 % teste", "#f2f2f2"),
-        ("Pré-processamento\nlimpeza, tokenização, stemming", "#f2f2f2"),
-        ("Representação TF-IDF\nunigramas + bigramas, 50 mil termos", "#f2f2f2"),
-        ("Busca de hiperparâmetros\nvalidação cruzada 5-fold", "#f2f2f2"),
-        ("Treinamento final\nconjunto de treinamento completo", "#f2f2f2"),
-        ("Avaliação única\nconjunto de teste isolado", "#f2f2f2"),
-        ("Comparação de desempenho\ne custo computacional", "#e8e8e8"),
+        "1. Corpus IMDb\n50 mil críticas",
+        "2. Divisão estratificada\n80 % treino / 20 % teste",
+        "3. Pré-processamento\nlimpeza, negação, stemming",
+        "4. Representação\nTF-IDF, 50 mil termos",
+        "5. Busca de\nhiperparâmetros (5-fold)",
+        "6. Treinamento final\n40 mil críticas",
+        "7. Avaliação única\n10 mil críticas",
+        "8. Comparação de\ndesempenho e custo",
     ]
 
-    fig, ax = plt.subplots(figsize=(3.15, 5.55))
-    ax.set_xlim(0, 1)
-    ax.set_ylim(0, len(steps))
+    fig, ax = plt.subplots(figsize=(6.0, 2.35))
+    ax.set_xlim(0, 4)
+    ax.set_ylim(0, 2)
     ax.axis("off")
 
-    height, gap = 0.72, 0.28
-    for index, (text, color) in enumerate(steps):
-        y = len(steps) - index - 1
-        box = FancyBboxPatch(
-            (0.04, y + gap / 2 - 0.02), 0.92, height,
-            boxstyle="round,pad=0.012,rounding_size=0.03",
-            linewidth=0.7, edgecolor="black", facecolor=color,
-        )
-        ax.add_patch(box)
-        ax.text(0.5, y + gap / 2 + height / 2 - 0.02, text,
-                ha="center", va="center", fontsize=7.2, linespacing=1.35)
-        if index < len(steps) - 1:
+    def box(x, y, text, fill):
+        ax.add_patch(FancyBboxPatch(
+            (x + 0.05, y + 0.10), 0.90, 0.80,
+            boxstyle="round,pad=0.01,rounding_size=0.04",
+            linewidth=0.7, edgecolor="black", facecolor=fill,
+        ))
+        ax.text(x + 0.50, y + 0.50, text, ha="center", va="center",
+                fontsize=5.6, linespacing=1.35)
+
+    fills = ["#e6e6e6", "#f4f4f4", "#f4f4f4", "#f4f4f4",
+             "#f4f4f4", "#f4f4f4", "#f4f4f4", "#e6e6e6"]
+    positions = []
+    for index, text in enumerate(steps):
+        row, position = divmod(index, 4)
+        column = position if row == 0 else 3 - position     # serpentine layout
+        y = 1.05 if row == 0 else 0.05
+        positions.append((column, y))
+        box(column, y, text, fills[index])
+
+    for index in range(len(steps)):
+        column, y = positions[index]
+        if index == 3:                                      # down to the next row
             ax.add_patch(FancyArrowPatch(
-                (0.5, y + gap / 2 - 0.03), (0.5, y - gap / 2 + 0.005),
-                arrowstyle="-|>", mutation_scale=7, linewidth=0.7, color="black",
+                (3.50, 1.05), (3.50, 0.96), arrowstyle="-|>",
+                mutation_scale=6, linewidth=0.6, color="black",
             ))
+        elif index != len(steps) - 1:
+            if index < 3:                                   # left to right
+                ax.add_patch(FancyArrowPatch(
+                    (column + 0.96, y + 0.50), (column + 1.03, y + 0.50),
+                    arrowstyle="-|>", mutation_scale=6, linewidth=0.6, color="black",
+                ))
+            else:                                           # right to left
+                ax.add_patch(FancyArrowPatch(
+                    (column + 0.04, y + 0.50), (column - 0.03, y + 0.50),
+                    arrowstyle="-|>", mutation_scale=6, linewidth=0.6, color="black",
+                ))
     fig.savefig(path)
     plt.close(fig)
 
