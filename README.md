@@ -30,6 +30,8 @@ completos estão em [`results/metrics_test.csv`](results/metrics_test.csv) e
 [`results/figures`](results/figures) e a análise de erros em
 [`results/error_analysis.json`](results/error_analysis.json).
 
+O artigo completo está em [`paper/Guilherme_Thiago_Artigo_SBC.pdf`](paper/Guilherme_Thiago_Artigo_SBC.pdf).
+
 ## Estrutura do repositório
 
 ```
@@ -45,6 +47,7 @@ completos estão em [`results/metrics_test.csv`](results/metrics_test.csv) e
 │   ├── run_experiments.py # executa o experimento completo
 │   ├── error_analysis.py  # análise de erros por tipo de texto
 │   └── make_figures.py    # gera as figuras do artigo
+├── paper/                 # artigo em formato SBC (PDF)
 ├── tests/                 # testes unitários do pré-processamento
 ├── results/               # tabelas, figuras e previsões (versionadas)
 └── data/                  # corpus bruto e cache (não versionado)
